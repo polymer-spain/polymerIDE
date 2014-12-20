@@ -15,15 +15,15 @@ Color html
 
 #Enviroment:
 IDE
--- Coding (TextEditor)
--- Preview (Browser viewer) -> Visual IDE  (designer)
--- Componentes ( Toolbar )
+	-- Coding (TextEditor)
+	-- Preview (Browser viewer) -> Visual IDE  (designer)
+	-- Componentes ( Toolbar )
 
 #WorkFlow 
 	-- Project Definition
---- Advanced User or Entrepreneur 
---- Layout Templates
---- Native Components (Core-element, paper-elements, routing-elements)
+		-- Advanced User or Entrepreneur 
+	--- Layout Templates
+	--- Native Components (Core-element, paper-elements, routing-elements)
 
 
 
@@ -31,25 +31,27 @@ IDE
 #Similar Projects:
 
 ##Frontend
-http://www.applicationcraft.com/
-https://www.codebox.io/
-https://codio.com/
-http://www.sencha.com/
-http://codemirror.net/demo
+	http://www.applicationcraft.com/
+	https://www.codebox.io/
+	https://codio.com/
+	http://www.sencha.com/
+	http://codemirror.net/demo
 ##Bakends
-http://deployd.com/
-https://www.meteor.com/
-
-<registers>
-     <register name=”xxxx” select=”[xxxx]”>
-</registers>
+	http://deployd.com/
+	https://www.meteor.com/
 
 
-<div>
-	<div menu>
-	<div toolbar>
-           <div editor>
-</div>
+#integration
+	<registers>
+	     <register name=”xxxx” select=”[xxxx]”>
+	</registers>
+	
+	
+	<div>
+		<div menu>
+		<div toolbar>
+	           <div editor>
+	</div>
 
 window.namespace.add(service)
 
