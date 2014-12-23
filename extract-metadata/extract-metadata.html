@@ -1,0 +1,50 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<polymer-element name="extract-metadata">
+    <template>
+        <style>
+        :host{
+            display: none
+        }
+        </style>
+        <iframe id="content"></iframe>
+    </template>
+    <script>
+       Polymer("extract-metadata",{
+            getMetadata :function(url,name){
+                var document = this.$.content.contentDocument;
+
+                function createComponent(){
+                    var promise = new Promise(function(resolve,reject){
+                        var component = document.querySelector(name);
+                        if(component)
+                            resolve(component);
+                        else{
+                            importDocument(resolve,reject);
+                        }
+                    });
+                    return promise;
+                }
+
+                function importDocument(resolve,reject){
+                    var link = document.createElement("link");
+                    link.rel ="import";
+                    link.href=url;
+                    link.onload = function(){
+                        var component = document.createElement(name);
+                        var node = document.body.appendChild(component);
+                        Polymer.whenPolymerReady(function(){
+                            resolve(node);
+                        });
+                    };
+                    link.error = function(event){
+                        reject("error");
+                    };
+                    document.head.appendChild(link);
+                }
+
+                return createComponent();
+            }
+    });
+
+    </script>
+</polymer-element>
