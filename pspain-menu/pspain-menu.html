@@ -1,0 +1,143 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="psspain-menu">
+    <template>
+        <link rel="stylesheet" href="pspain-menu.css">
+        <div class="nav">
+            <ul>
+             <template repeat="{{ items }}" id="t">
+              <li>
+                    <template if="{{ !children }}">
+                        <a href="#">{{name}}</a>
+                    </template>
+                    <template if="{{ children }}">
+                         <a href="#" children>{{name}}</a>
+                         <ul>
+                            <template ref="t" repeat="{{ children }}"></template>
+                        </ul>
+                    </template>
+              </li>
+            </template>
+            </ul>
+        </div>
+    </template>
+<script>
+    Polymer("psspain-menu",{
+
+        ready:function(){
+            this.$.t.model={
+                'items': [
+                  {
+                    'name': 'Africa',
+                    'children': [
+                      {
+                        'name': 'Egypt'
+                      },
+                      {
+                        'name': 'Kenya',
+                        'children': [
+                          {
+                            'name': 'Nairobi'
+                          },
+                          {
+                            'name': 'Mombasa'
+                          }
+                        ]
+                      },
+                      {
+                        'name': 'Sudan',
+                        'children': [{
+                          'name': 'Khartoum'
+                        }]
+                      }
+                    ]
+                  },
+                  {
+                    'name': 'Asia',
+                    'children': [
+                      {
+                        'name': 'China'
+                      },
+                      {
+                        'name': 'India'
+                      },
+                      {
+                        'name': 'Russia'
+                      },
+                      {
+                        'name': 'Mongolia'
+                      }
+                    ]
+                  },
+                  {
+                    'name': 'Australia',
+                    'children':[{
+                      'name': 'Commonwealth of Australia'
+                    }]
+                  },
+                  {
+                    'name': 'Europe',
+                    'children': [
+                      {
+                        'name': 'Germany'
+                      },
+                      {
+                        'name': 'France'
+                      },
+                      {
+                        'name': 'Spain'
+                      },
+                      {
+                        'name': 'Italy'
+                      }
+                    ]
+                  },
+                  {
+                    'name': 'North America',
+                    'children': [
+                      {
+                        'name': 'Mexico',
+                        'children': [
+                          {
+                            'name': 'Mexico City'
+                          },
+                          {
+                            'name': 'Guadalajara'
+                          }
+                        ]
+                      },
+                      {
+                        'name': 'Canada',
+                        'children': [
+                          {
+                            'name': 'Ottawa'
+                          },
+                          {
+                            'name': 'Toronto'
+                          }
+                        ]
+                      },
+                      {
+                        'name': 'United States of America'
+                      }
+                    ]
+                  },
+                  {
+                    'name': 'South America',
+                    'children': [
+                      {
+                        'name': 'Brazil'
+                      },
+                      {
+                        'name': 'Argentina'
+                      }
+                    ]
+                  }
+                ]
+              };
+
+        }
+    });
+</script>
+
+</polymer-element>

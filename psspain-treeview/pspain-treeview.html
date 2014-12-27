@@ -1,12 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="tree-view">
+<polymer-element name="psspain-treeview">
     <template>
-
-        <link rel="stylesheet" href="tree-view.css">
-
-        <h2>Recursive Template</h2>
-        <div class="treeview">
+        <link rel="stylesheet" href="psspain-treeview.css">
+        <div class="treeview" on-contextmenu="{{showContextMenu}}">
             <ul>
              <template repeat="{{ items }}" id="t">
               <li>
@@ -14,7 +11,7 @@
                         <span>{{name}}</span>
                     </template>
                     <template if="{{ children }}">
-                        <input type="checkbox" id="{{name}}"/>
+                        <input type="checkbox" id="{{name}}" checked/>
                         <label for="{{name}}">
                             <span>{{name}}</span>
                         </label>
@@ -26,11 +23,13 @@
             </template>
             </ul>
         </div>
-
     </template>
-
 <script>
-    Polymer("tree-view",{
+    Polymer("psspain-treeview",{
+        showContextMenu:function(e){
+            console.log(arguments);
+            e.preventDefault();
+        },
         ready:function(){
             this.$.t.model={
                 'items': [
