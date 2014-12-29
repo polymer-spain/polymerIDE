@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-     <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+     <script src="../../bower_components/webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href ="../psspain-contextmenu.html">
 </head>
 <body>
@@ -12,12 +12,13 @@
     <script>
         Polymer.whenPolymerReady(function(){
             var menu=document.querySelector('psspain-contextmenu');
+            var commandManager = PSspain.api.commandManager;
+            var Commands = PSspain.api.Commands;
             window.addEventListener("contextmenu",function(ev){
-                menu.show(ev);
+                var command = commandManager.get(Commands.CONTEXTMENU_OPEN)(ev);
             },false);
             window.addEventListener("click",function(ev){
-                menu.hide();
-                ev.preventDefault();
+                commandManager.get(Commands.CONTEXTMENU_CLOSE)(ev);
             },false);
         });
     </script>

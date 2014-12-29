@@ -1,11 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../api/api.html">
 <polymer-element name="psspain-contextmenu">
     <template>
         <link rel="stylesheet" href="psspain-contextmenu.css">
 
             <ul class="vertical">
                 <template repeat="{{ items }}" id="t">
-                   <li on-click='{{hide}}'>
+                   <li>
                         <template if="{{ !children }}">
                             <a href="#">{{name}}</a>
                         </template>
@@ -21,134 +22,144 @@
 
     </template>
     <script>
-        Polymer('psspain-contextmenu',{
-            ready:function(){
-                this.$.t.model={
-                'items': [
-                  {
-                    'name': 'Africa',
-                    'children': [
-                      {
-                        'name': 'Egypt'
-                      },
-                      {
-                        'name': 'Kenya',
-                        'children': [
-                          {
-                            'name': 'Nairobi'
-                          },
-                          {
-                            'name': 'Mombasa'
-                          }
-                        ]
-                      },
-                      {
-                        'name': 'Sudan',
-                        'children': [{
-                          'name': 'Khartoum'
-                        }]
-                      }
-                    ]
-                  },
-                  {
-                    'name': 'Asia',
-                    'children': [
-                      {
-                        'name': 'China'
-                      },
-                      {
-                        'name': 'India'
-                      },
-                      {
-                        'name': 'Russia'
-                      },
-                      {
-                        'name': 'Mongolia'
-                      }
-                    ]
-                  },
-                  {
-                    'name': 'Australia',
-                    'children':[{
-                      'name': 'Commonwealth of Australia'
-                    }]
-                  },
-                  {
-                    'name': 'Europe',
-                    'children': [
-                      {
-                        'name': 'Germany'
-                      },
-                      {
-                        'name': 'France'
-                      },
-                      {
-                        'name': 'Spain'
-                      },
-                      {
-                        'name': 'Italy'
-                      }
-                    ]
-                  },
-                  {
-                    'name': 'North America',
-                    'children': [
-                      {
-                        'name': 'Mexico',
-                        'children': [
-                          {
-                            'name': 'Mexico City'
-                          },
-                          {
-                            'name': 'Guadalajara'
-                          }
-                        ]
-                      },
-                      {
-                        'name': 'Canada',
-                        'children': [
-                          {
-                            'name': 'Ottawa'
-                          },
-                          {
-                            'name': 'Toronto'
-                          }
-                        ]
-                      },
-                      {
-                        'name': 'United States of America'
-                      }
-                    ]
-                  },
-                  {
-                    'name': 'South America',
-                    'children': [
-                      {
-                        'name': 'Brazil'
-                      },
-                      {
-                        'name': 'Argentina'
-                      }
-                    ]
-                  }
-                ]
-              };
+        (function(){
+            var commandManager= PSspain.api.commandManager;
+            var commands = PSspain.api.Commands;
+            Polymer('psspain-contextmenu',{
+                ready:function(){
 
-            },
-            show:function(ev){
-                this.style.display='block';
-                this.style.position ='absolute';
-                this.style.left= ev.clientX + 'px';
-                this.style.top=ev.clientY + 'px';
-                ev.preventDefault();
-            },
-            hide:function(ev){
-                this.style.display='none';
-                if(ev){
-                    ev.stopPropagation();
+                    // Register Command
+                    commandManager.register(commands.CONTEXTMENU_OPEN,this.open.bind(this));
+                    commandManager.register(commands.CONTEXTMENU_CLOSE,this.close.bind(this));
+
+                    this.$.t.model={
+                    'items': [
+                      {
+                        'name': 'Africa',
+                        'children': [
+                          {
+                            'name': 'Egypt'
+                          },
+                          {
+                            'name': 'Kenya',
+                            'children': [
+                              {
+                                'name': 'Nairobi'
+                              },
+                              {
+                                'name': 'Mombasa'
+                              }
+                            ]
+                          },
+                          {
+                            'name': 'Sudan',
+                            'children': [{
+                              'name': 'Khartoum'
+                            }]
+                          }
+                        ]
+                      },
+                      {
+                        'name': 'Asia',
+                        'children': [
+                          {
+                            'name': 'China'
+                          },
+                          {
+                            'name': 'India'
+                          },
+                          {
+                            'name': 'Russia'
+                          },
+                          {
+                            'name': 'Mongolia'
+                          }
+                        ]
+                      },
+                      {
+                        'name': 'Australia',
+                        'children':[{
+                          'name': 'Commonwealth of Australia'
+                        }]
+                      },
+                      {
+                        'name': 'Europe',
+                        'children': [
+                          {
+                            'name': 'Germany'
+                          },
+                          {
+                            'name': 'France'
+                          },
+                          {
+                            'name': 'Spain'
+                          },
+                          {
+                            'name': 'Italy'
+                          }
+                        ]
+                      },
+                      {
+                        'name': 'North America',
+                        'children': [
+                          {
+                            'name': 'Mexico',
+                            'children': [
+                              {
+                                'name': 'Mexico City'
+                              },
+                              {
+                                'name': 'Guadalajara'
+                              }
+                            ]
+                          },
+                          {
+                            'name': 'Canada',
+                            'children': [
+                              {
+                                'name': 'Ottawa'
+                              },
+                              {
+                                'name': 'Toronto'
+                              }
+                            ]
+                          },
+                          {
+                            'name': 'United States of America'
+                          }
+                        ]
+                      },
+                      {
+                        'name': 'South America',
+                        'children': [
+                          {
+                            'name': 'Brazil'
+                          },
+                          {
+                            'name': 'Argentina'
+                          }
+                        ]
+                      }
+                    ]
+                  };
+
+                },
+                open:function(ev){
+                    this.style.display='block';
+                    this.style.position ='absolute';
+                    this.style.left= ev.clientX + 'px';
+                    this.style.top=ev.clientY+ 'px';
                     ev.preventDefault();
+                },
+                close:function(ev){
+                    this.style.display='none';
+                    if(ev){
+                        ev.preventDefault();
+                        ev.stopPropagation();
+                    }
                 }
-            }
-        });
+
+            });
+        }());
     </script>
 </polymer-element>
