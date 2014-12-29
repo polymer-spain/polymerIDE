@@ -1,0 +1,59 @@
+:host{
+    display: none;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding:0;
+    position: relative;
+    float:left;
+    min-width:160px;
+}
+a{
+    text-decoration:none;
+    color:black;
+    padding:3px;
+    margin:0 2px;
+}
+
+ul li {
+ float: left;
+ position: relative;
+ min-height: 1px;
+ line-height: 1.3em;
+ vertical-align: middle;
+}
+
+ul li:hover {
+  cursor:pointer;
+  background-color:red;
+  color:white;
+}
+
+ul ul {
+ display: none;
+ position: absolute;
+ top: 100%;
+ left: 0;
+ width: 100%;
+}
+
+ul ul li {
+ float: none;
+}
+
+ul ul ul {
+ top: 0
+ left: 100%;
+}
+
+ul li:hover > ul {
+ display: block;
+}
+ul.vertical ul {
+ top: 0;
+ left: 100%;
+}
+ul.vertical li {
+ float: none;
+}

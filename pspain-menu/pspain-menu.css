@@ -9,7 +9,6 @@
     float:left;
     display:list-item;
     list-style: none;
-
     background-color:#d5e1ed;
     border-bottom: 5px solid #bcc3bf;
 }
@@ -17,7 +16,6 @@
 .nav ul li a {
     display:block;
     padding:15px 10px;
-
     color:#0a0a0a;
     font-size:20px;
     text-decoration:none;
@@ -57,7 +55,7 @@ li > a+ul:after { content: ''; }*/
 
 /* Second, Third and more Tiers	*/
 .nav ul ul ul li {
-    position: absolute relative;
+    position: relative;
     top:-58px;
     left:170px;
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href ="../psspain-contextmenu.html">
+</head>
+<body>
+    <div>pulsa con el botón derecho para mostrar el menu</div>
+    <psspain-contextmenu></psspain-contextmenu>
+    <script>
+        Polymer.whenPolymerReady(function(){
+            var menu=document.querySelector('psspain-contextmenu');
+            window.addEventListener("contextmenu",function(ev){
+                menu.show(ev);
+            },false);
+            window.addEventListener("click",function(ev){
+                menu.hide();
+                ev.preventDefault();
+            },false);
+        });
+    </script>
+</body>
+</html>
