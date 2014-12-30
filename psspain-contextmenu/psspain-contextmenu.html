@@ -22,9 +22,11 @@
 
     </template>
     <script>
-        (function(){
-            var commandManager= PSspain.api.commandManager;
-            var commands = PSspain.api.Commands;
+        (function(scope){
+
+            var commandManager  =     scope.commandManager,
+                commands        =     scope.Commands;
+
             Polymer('psspain-contextmenu',{
                 ready:function(){
 
@@ -145,10 +147,10 @@
 
                 },
                 open:function(ev){
-                    this.style.display='block';
-                    this.style.position ='absolute';
-                    this.style.left= ev.clientX + 'px';
-                    this.style.top=ev.clientY+ 'px';
+                    this.style.display      =   'block';
+                    this.style.position     =   'absolute';
+                    this.style.left         =   ev.clientX + 'px';
+                    this.style.top          =   ev.clientY+ 'px';
                     ev.preventDefault();
                 },
                 close:function(ev){
@@ -160,6 +162,6 @@
                 }
 
             });
-        }());
+        }(PSspain.api));
     </script>
 </polymer-element>
